@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -31,6 +32,7 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* Login Page */
@@ -398,10 +400,12 @@ body {
     flex: 1;
     margin-left: 270px;
     transition: margin-left 0.3s ease;
+    width: calc(100% - 270px);
 }
 
 .main-content.expanded {
     margin-left: 0;
+    width: 100%;
 }
 
 .top-bar {
@@ -520,9 +524,23 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+
+.main-content.sidebar-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    display: none;
+}
+
+@media (max-width: 1200px) {
     .sidebar {
         transform: translateX(-270px);
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
 
     .sidebar.active {
@@ -531,20 +549,26 @@ body {
 
     .main-content {
         margin-left: 0;
+        width: 100%;
     }
 
     .menu-toggle {
         display: block;
     }
+    .main-content.sidebar-active::before {
+        display: block;
+    }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     #pageContent {
         padding: 20px;
     }
 
     .top-bar {
         padding: 16px 20px;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     .greeting {
@@ -553,5 +577,32 @@ body {
 
     .login-card {
         padding: 32px 24px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting {
+        font-size: 18px;
+    }
+
+    .top-actions .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .login-title {
+        font-size: 24px;
+    }
+
+    .login-subtitle {
+        font-size: 14px;
     }
 }
