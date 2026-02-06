@@ -1,211 +1,112 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareBook - Care Management System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Login Page -->
-    <div id="loginPage" class="login-container">
-        <div class="login-card">
-            <div class="login-logo">
-                <div class="logo-circle">
-                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <path d="M30 10C20 10 15 15 15 25C15 32 20 37 25 42L30 47L35 42C40 37 45 32 45 25C45 15 40 10 30 10Z" fill="url(#gradient)" stroke="#2d9b8e" stroke-width="2"/>
-                        <defs>
-                            <linearGradient id="gradient" x1="15" y1="10" x2="45" y2="47">
-                                <stop offset="0%" style="stop-color:#5eb9ae;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#2d9b8e;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-            </div>
-            <h1 class="login-title">Welcome to CareBook</h1>
-            <p class="login-subtitle">Sign in to continue</p>
 
-            <button id="googleSignInBtn" class="google-btn">
-                <svg width="18" height="18" viewBox="0 0 18 18">
-                    <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
-                    <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
-                    <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z"/>
-                    <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
-                </svg>
-                Continue with Google
-            </button>
-
-            <div class="divider">
-                <span>OR</span>
-            </div>
-
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="you@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="signin-btn">Sign in</button>
-            </form>
-
-            <div class="login-footer">
-                <a href="#" id="forgotPasswordLink">Forgot password?</a>
-                <span>Need an account? <a href="#" id="signUpLink">Sign up</a></span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sign Up Page -->
-    <div id="signUpPage" class="login-container" style="display: none;">
-        <div class="login-card">
-            <div class="login-logo">
-                <div class="logo-circle">
-                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <path d="M30 10C20 10 15 15 15 25C15 32 20 37 25 42L30 47L35 42C40 37 45 32 45 25C45 15 40 10 30 10Z" fill="url(#gradient2)" stroke="#2d9b8e" stroke-width="2"/>
-                        <defs>
-                            <linearGradient id="gradient2" x1="15" y1="10" x2="45" y2="47">
-                                <stop offset="0%" style="stop-color:#5eb9ae;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#2d9b8e;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-            </div>
-            <h1 class="login-title">Create Account</h1>
-            <p class="login-subtitle">Sign up to get started</p>
-
-            <form id="signUpForm">
-                <div class="form-group">
-                    <label for="signUpName">Full Name</label>
-                    <input type="text" id="signUpName" placeholder="Your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="signUpEmail">Email</label>
-                    <input type="email" id="signUpEmail" placeholder="you@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="signUpPassword">Password</label>
-                    <input type="password" id="signUpPassword" placeholder="••••••••" required minlength="6">
-                </div>
-                <button type="submit" class="signin-btn">Create Account</button>
-            </form>
-
-            <div class="login-footer">
-                <span>Already have an account? <a href="#" id="backToLoginLink">Sign in</a></span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen" style="display: none;">
-        <div class="spinner"></div>
+    <div id="loadingScreen" class="auth-container" style="display: none;">
         <p>Loading...</p>
     </div>
 
-    <!-- Main App Container -->
-    <div id="appContainer" class="app-container" style="display: none;">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">♥</div>
-                <div class="logo-text">CareBook</div>
-            </div>
-            
-            <nav class="nav-menu">
-                <div class="nav-item active" data-page="dashboard">
-                    <span class="nav-icon">📊</span>
-                    <span>Dashboard</span>
+    <div id="loginPage" class="auth-container" style="display: flex;">
+        <div class="auth-card">
+            <h1>Welcome Back</h1>
+            <p>Sign in to access your dashboard.</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
                 </div>
-                <div class="nav-item" data-page="my-tasks">
-                    <span class="nav-icon">✓</span>
-                    <span>My Tasks</span>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
                 </div>
-                <div class="nav-item" data-page="staff">
-                    <span class="nav-icon">👥</span>
-                    <span>Staff</span>
-                </div>
-                <div class="nav-item" data-page="service-users">
-                    <span class="nav-icon">♥</span>
-                    <span>Service Users</span>
-                </div>
-                <div class="nav-item" data-page="rota">
-                    <span class="nav-icon">📅</span>
-                    <span>Rota</span>
-                </div>
-                <div class="nav-item" data-page="visits">
-                    <span class="nav-icon">🏠</span>
-                    <span>Visits</span>
-                </div>
-                <div class="nav-item" data-page="medications">
-                    <span class="nav-icon">💊</span>
-                    <span>Medications</span>
-                </div>
-                <div class="nav-item" data-page="mar-chart">
-                    <span class="nav-icon">📋</span>
-                    <span>MAR Chart</span>
-                </div>
-                <div class="nav-item" data-page="care-plans">
-                    <span class="nav-icon">📄</span>
-                    <span>Care Plans</span>
-                </div>
-                <div class="nav-item" data-page="daily-logs">
-                    <span class="nav-icon">📝</span>
-                    <span>Daily Logs</span>
-                </div>
-                <div class="nav-item" data-page="reports">
-                    <span class="nav-icon">📈</span>
-                    <span>Reports</span>
-                </div>
-                <div class="nav-item" data-page="audit-log">
-                    <span class="nav-icon">👁</span>
-                    <span>Audit Log</span>
-                </div>
-            </nav>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+            <div class="divider">or</div>
+            <button id="googleSignInBtn" class="btn btn-secondary">Sign In with Google</button>
+            <p class="mt-4">
+                <a href="#" id="forgotPasswordLink" class="link">Forgot Password?</a>
+            </p>
+            <p>
+                Don't have an account? <a href="#" id="signUpLink" class="link">Sign Up</a>
+            </p>
+        </div>
+    </div>
 
-            <div class="user-profile">
-                <div class="user-info">
-                    <div class="user-avatar" id="userAvatar">D</div>
-                    <div class="user-details">
-                        <div class="user-name" id="userName">User</div>
-                        <div class="user-role">Admin</div>
-                    </div>
+    <div id="signUpPage" class="auth-container" style="display: none;">
+        <div class="auth-card">
+            <h1>Create Account</h1>
+            <p>Get started with CareBook today.</p>
+            <form id="signUpForm">
+                <div class="form-group">
+                    <label for="signUpName">Full Name</label>
+                    <input type="text" id="signUpName" class="form-control" required>
                 </div>
-                <button id="logoutBtn" class="logout-btn" title="Logout">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
-                    </svg>
-                </button>
+                <div class="form-group">
+                    <label for="signUpEmail">Email</label>
+                    <input type="email" id="signUpEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="signUpPassword">Password</label>
+                    <input type="password" id="signUpPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+            <p class="mt-4">
+                Already have an account? <a href="#" id="backToLoginLink" class="link">Sign In</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="appContainer">
+        <button id="menuToggle">☰</button>
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <h2>CareBook</h2>
+            </div>
+            <nav>
+                <a href="#" class="nav-item active" data-page="dashboard">Dashboard</a>
+                <a href="#" class="nav-item" data-page="my-tasks">My Tasks</a>
+                <a href="#" class="nav-item" data-page="staff">Staff</a>
+                <a href="#" class="nav-item" data-page="service-users">Service Users</a>
+                <a href="#" class="nav-item" data-page="rota">Rota</a>
+                <a href="#" class="nav-item" data-page="visits">Visits</a>
+                <a href="#" class="nav-item" data-page="medications">Medications</a>
+                <a href="#" class="nav-item" data-page="mar-chart">MAR Chart</a>
+                <a href="#" class="nav-item" data-page="care-plans">Care Plans</a>
+                <a href="#" class="nav-item" data-page="daily-logs">Daily Logs</a>
+                <a href="#" class="nav-item" data-page="reports">Reports</a>
+                <a href="#" class="nav-item" data-page="audit-log">Audit Log</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div id="user-info">
+                    <div id="userAvatar"></div>
+                    <span id="userName"></span>
+                </div>
+                <button id="logoutBtn">Logout</button>
             </div>
         </aside>
-
-        <!-- Main Content -->
-        <main class="main-content" id="mainContent">
-            <div class="top-bar">
-                <button class="menu-toggle" id="menuToggle">☰</button>
+        <main id="mainContent">
+            <header>
                 <div>
-                    <div class="greeting" id="greeting">Good evening, DREW</div>
-                    <div class="date-display" id="dateDisplay"></div>
+                    <h1 id="greeting"></h1>
+                    <p id="dateDisplay"></p>
                 </div>
-                <div class="top-actions">
-                    <button class="btn btn-primary" onclick="alert('Rota feature coming soon!')">
-                        📅 View Rota
-                    </button>
-                </div>
+            </header>
+            <div id="pageContent">
             </div>
-
-            <!-- All page content containers will be loaded here -->
-            <div id="pageContent"></div>
         </main>
     </div>
 
-    <!-- Toast Notification Container -->
-    <div id="toastContainer" class="toast-container"></div>
+    <div id="toastContainer"></div>
 
-    <!-- Firebase SDK -->
     <script type="module" src="app.js"></script>
 </body>
 </html>
